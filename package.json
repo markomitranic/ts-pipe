@@ -1,6 +1,6 @@
 {
   "name": "tspipe",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A set of utility functions, inspired by good design of Elixir lang and poor design of lodash.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -20,6 +20,9 @@
     "type": "git",
     "url": "git+https://github.com/markomitranic/ts-pipe.git"
   },
+  "dependencies": {
+    "ts-node": "^10.8.1"
+  },
   "devDependencies": {
     "@types/eslint": "^8.4.2",
     "@types/jest": "^28.1.1",
@@ -34,8 +37,6 @@
     "prettier": "^2.6.2",
     "prettier-eslint": "^15.0.1",
     "ts-jest": "^28.0.4",
-    "ts-node": "^10.8.1",
-    "tsconfig-paths": "^4.0.0",
-    "typescript": "^4.7.3"
+    "tsconfig-paths": "^4.0.0"
   }
 }

@@ -69,25 +69,25 @@ abstract class Pipe {
     return Pipe.pipe1(input, f1);
   }
 
-  public static pipe1 = async <A, R1>(
+  private static pipe1 = async <A, R1>(
     input: A,
     f1: (args: A) => Promise<R1> | R1
   ): Promise<R1> => await f1(input);
 
-  public static pipe2 = async <A, R1, R2>(
+  private static pipe2 = async <A, R1, R2>(
     input: A,
     f1: (args: A) => Promise<R1> | R1,
     f2: (args: R1) => Promise<R2> | R2
   ): Promise<R2> => await f2(await f1(input));
 
-  public static pipe3 = async <A, R1, R2, R3>(
+  private static pipe3 = async <A, R1, R2, R3>(
     input: A,
     f1: (args: A) => Promise<R1> | R1,
     f2: (args: R1) => Promise<R2> | R2,
     f3: (args: R2) => Promise<R3> | R3
   ): Promise<R3> => await f3(await f2(await f1(input)));
 
-  public static pipe4 = async <A, R1, R2, R3, R4>(
+  private static pipe4 = async <A, R1, R2, R3, R4>(
     input: A,
     f1: (args: A) => Promise<R1> | R1,
     f2: (args: R1) => Promise<R2> | R2,
@@ -95,7 +95,7 @@ abstract class Pipe {
     f4: (args: R3) => Promise<R4> | R4
   ): Promise<R4> => await f4(await f3(await f2(await f1(input))));
 
-  public static pipe5 = async <A, R1, R2, R3, R4, R5>(
+  private static pipe5 = async <A, R1, R2, R3, R4, R5>(
     input: A,
     f1: (args: A) => Promise<R1> | R1,
     f2: (args: R1) => Promise<R2> | R2,
@@ -104,7 +104,7 @@ abstract class Pipe {
     f5: (args: R4) => R5
   ): Promise<R5> => await f5(await f4(await f3(await f2(await f1(input)))));
 
-  public static pipe6 = async <A, R1, R2, R3, R4, R5, R6>(
+  private static pipe6 = async <A, R1, R2, R3, R4, R5, R6>(
     input: A,
     f1: (args: A) => Promise<R1> | R1,
     f2: (args: R1) => Promise<R2> | R2,
@@ -115,7 +115,7 @@ abstract class Pipe {
   ): Promise<R6> =>
     await f6(await f5(await f4(await f3(await f2(await f1(input))))));
 
-  public static pipe7 = async <A, R1, R2, R3, R4, R5, R6, R7>(
+    private static pipe7 = async <A, R1, R2, R3, R4, R5, R6, R7>(
     input: A,
     f1: (args: A) => Promise<R1> | R1,
     f2: (args: R1) => Promise<R2> | R2,
