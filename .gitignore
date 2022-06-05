@@ -1,0 +1,14 @@
+# Logs
+logs
+*.log
+
+# Dependency directories
+node_modules/
+*.tsbuildinfo
+.npm
+.eslintcache
+.yarn-integrity
+*.tgz
+
+# Transient domain directories
+dist

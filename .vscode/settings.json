@@ -1,0 +1,14 @@
+{
+  "eslint.format.enable": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "typescript.preferences.quoteStyle": "single",
+  "editor.rulers": [80, 120]
+}
