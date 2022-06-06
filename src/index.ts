@@ -1,3 +1,4 @@
-import { pipe as pipe_pipe } from "pipe";
+import { pipe } from "./pipe";
+import { console_log } from "./utilities";
 
-export const pipe = pipe_pipe;
+export { pipe, console_log };
