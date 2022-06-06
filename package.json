@@ -1,6 +1,6 @@
 {
-  "name": "tspipe",
-  "version": "0.1.",
+  "name": "@markomitranic/tspipe",
+  "version": "0.1.0",
   "description": "A set of utility functions, inspired by good design of Elixir lang and poor design of lodash.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
