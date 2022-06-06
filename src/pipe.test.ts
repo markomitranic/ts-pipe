@@ -1,4 +1,4 @@
-import pipe from "../src/index";
+import { pipe } from "./pipe";
 
 test("propagates the original argument", () =>
   pipe("123", (__) => expect(__).toBe("123")));
