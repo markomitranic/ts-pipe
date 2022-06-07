@@ -1,16 +1,16 @@
 import { pipe } from "./pipe";
 
 test("propagates the original argument", () =>
-  pipe("123", (__) => expect(__).toBe("123")));
+  pipe("123", (_) => expect(_).toBe("123")));
 
 test("works with stdlib functions", () =>
   pipe(
     "1, 2, 3",
-    (__) => __.split(", "),
-    (__) => __.map((item) => item + item),
-    (__) => __.join("-"),
-    (__) =>
-      expect(__).toBe(
+    (_) => _.split(", "),
+    (_) => _.map((item) => item + item),
+    (_) => _.join("-"),
+    (_) =>
+      expect(_).toBe(
         "1, 2, 3"
           .split(", ")
           .map((item) => item + item)
@@ -18,12 +18,65 @@ test("works with stdlib functions", () =>
       )
   ));
 
+test("long pipeline", () => {
+  pipe(
+    1,
+    (_) => _ + 1,
+    (_) => _ + 1,
+    (_) => _ + 1,
+    (_) => _ + 1,
+    (_) => _ + 1,
+    (_) => _ + 1,
+    (_) => _ + 1,
+    (_) => _ + 1,
+    (_) => _ + 1,
+    (_) => _ + 1,
+    (_) => _ + 1,
+    (_) => _ + 1
+  ).then((_) => {
+    expect(_).toBe(13);
+  });
+});
+
+test("double long pipeline", () => {
+  pipe(
+    1,
+    (_) => _ + 1,
+    (_) => _ + 1,
+    (_) => _ + 1,
+    (_) => _ + 1,
+    (_) => _ + 1,
+    (_) => _ + 1,
+    (_) =>
+      pipe(
+        _,
+        (_) => _ + 1,
+        (_) => _ + 1,
+        (_) => _ + 1,
+        (_) => _ + 1,
+        (_) => _ + 1
+      ),
+    (_) => _ + 1,
+    (_) => _ + 1,
+    (_) => _ + 1,
+    (_) => _ + 1,
+    (_) => _ + 1
+  ).then((_) => {
+    expect(_).toBe(17);
+  });
+});
+
 test("supports async/await", async () => {
-  await pipe(
+  const resp = await pipe(
     "1, 2, 3",
     async ($) => await waitFor($, 0.3),
-    ($) => expect(typeof $).toEqual("string")
+    ($) => {
+      expect(typeof $).toEqual("string");
+      return $;
+    }
   );
+
+  expect(typeof resp).toEqual("string");
 });
 
 test("automagically resolves promises within the pipe", async () => {
@@ -60,6 +113,34 @@ test("nested map traverse", () =>
     parseFloat,
     (_) => expect(_).toBe(6.19)
   ));
+
+test("pipes within pipes", async () => {
+  const middlePipePart = (_: number[]) =>
+    pipe(
+      _.map((i) => i + i),
+      (_) => _.map((i) => i.toString()),
+      (_) => {
+        _.push("end");
+        return _;
+      },
+      (_) => _.join("-"),
+      (_) => _.replace("4-6", "mid"),
+      (_) => "start" + _.substring(1)
+    );
+
+  pipe(
+    await pipe(
+      "1, 2, 3",
+      (_) => _.split(", "),
+      (_) => _.map((i) => parseInt(i))
+    ),
+    async (_) => await middlePipePart(_),
+    JSON.stringify
+  ).then((_) => {
+    expect(_).toBe('"start-mid-end"');
+    return _;
+  });
+});
 
 const waitFor = async <T>(data: T, seconds: number): Promise<T> => {
   return new Promise((resolve, _reject) => {

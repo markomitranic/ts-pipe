@@ -1,6 +1,6 @@
 {
   "name": "@markomitranic/tspipe",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A set of utility functions, inspired by good design of Elixir lang and poor design of lodash.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -23,8 +23,8 @@
   "dependencies": {
     "@types/node": "^17.0.38",
     "ts-node": "^10.8.1",
-    "typescript": "^4.7.3",
-    "tsconfig-paths": "^4.0.0"
+    "tsconfig-paths": "^4.0.0",
+    "typescript": "^4.7.3"
   },
   "devDependencies": {
     "@types/eslint": "^8.4.2",
