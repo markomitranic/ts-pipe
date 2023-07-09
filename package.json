@@ -9,7 +9,7 @@
   "private": false,
   "scripts": {
     "prepare": "npm run build",
-    "build": "rm -rf dist && tsc",
+    "build": "rm -rf dist && tsc --project tsconfig.build.json",
     "start": "node --nolazy -r ts-node/register -r tsconfig-paths/register ${workspaceFolder}/index.ts",
     "test": "jest"
   },
