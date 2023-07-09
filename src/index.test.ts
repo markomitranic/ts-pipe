@@ -1,9 +1,10 @@
-import { console_log, pipe } from "./index";
+import consoleLog from "./consoleLog";
+import pipe from "./pipe";
 
-test("sanity check, to-level imports work", () => {
+test("sanity check, to-level imports work", async () => {
   jest.spyOn(console, "log").mockImplementation(() => {
     return null;
   }); // shhh...
 
-  pipe("1", console_log, (_) => expect(_).toBe("1"));
+  await pipe("1", consoleLog, (_) => expect(_).toBe("1"));
 });
