@@ -1,4 +1,4 @@
-import { pipe } from "./pipe";
+import pipe from "./pipe";
 
 test("propagates the original argument", () =>
   pipe("123", (_) => expect(_).toBe("123")));
@@ -18,8 +18,8 @@ test("works with stdlib functions", () =>
       )
   ));
 
-test("long pipeline", () => {
-  pipe(
+test("long pipeline", async () => {
+  await pipe(
     1,
     (_) => _ + 1,
     (_) => _ + 1,
@@ -38,8 +38,8 @@ test("long pipeline", () => {
   });
 });
 
-test("double long pipeline", () => {
-  pipe(
+test("double long pipeline", async () => {
+  await pipe(
     1,
     (_) => _ + 1,
     (_) => _ + 1,
@@ -100,7 +100,7 @@ test("nested map traverse", () =>
       { player: "Pierre-Emerick Aubameyang", goals: 18, shots: 81 },
       { player: "Gylfi Sigurdsson", goals: 12, shots: 78 },
       { player: "Sadio Manè", goals: 18, shots: 77 },
-    ].reduce<any>(
+    ].reduce(
       ({ accGoals, accShots }, { goals, shots }) => ({
         accGoals: goals + accGoals,
         accShots: shots + accShots,
@@ -128,7 +128,7 @@ test("pipes within pipes", async () => {
       (_) => "start" + _.substring(1)
     );
 
-  pipe(
+  await pipe(
     await pipe(
       "1, 2, 3",
       (_) => _.split(", "),
