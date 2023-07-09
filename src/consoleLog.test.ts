@@ -1,5 +1,5 @@
-import consoleLog from "./consoleLog";
-import pipe from "./pipe";
+import { consoleLog } from "./consoleLog";
+import { pipe } from "./pipe";
 
 test("console_log returns the argument", () => {
   jest.spyOn(console, "log").mockImplementation(() => {
