@@ -1,4 +1,4 @@
-import { pipe } from "./pipe";
-import { console_log } from "./utilities";
+import consoleLog from "./consoleLog";
+import pipe from "./pipe";
 
-export default { pipe, console_log };
+export default { pipe, consoleLog };

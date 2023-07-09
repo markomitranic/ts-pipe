@@ -1,4 +1,49 @@
+/**
+ * The implementation seems basic, but is in fact what the big boys like
+ * `fp-ts` are doing. Pure and simple value composition, no magic here
+ * just a bit of type algebra.
+ *
+ * @see https://github.com/gcanti/fp-ts/blob/master/src/function.ts#L651
+ *
+ * I have played around with the idea of using `Promise` as a base,
+ * and it worked flawlessly, without any type algebra, but the syntax is uglier
+ * and everything has to be awaited, even when there are no `async` functions.
+ */
 abstract class Pipe {
+  /**
+   * Allows us to apply step-by-step transformations on a value
+   * with easy debugging access between steps and without naming concerns.
+   *
+   * Allows for async operations, with a caveat that steps are sequential and
+   * will await eachother. Thus, it is not suitable as a streaming `pipeline`.
+   *
+   * *Warning:* The maximum is 12 steps. You can easily pipe pipes together
+   * if you need more than 12. Or open a PR, it is fairly easy.
+   *
+   * @see https://github.com/markomitranic/ts-pipe/blob/main/README.md
+   *
+   * @example
+   * // Basic example
+   * pipe("1, 2, 3", myFunc, consoleLog, (_) => _.join("-"))
+   *
+   * // Variables can have any or no names
+   * pipe(
+   *  "1, 2, 3",
+   *  (__) => waitForSeconds(__, 30),
+   *  ($) => $.split(", "),
+   *  (explodedList) => explodedList.map((i) => parseInt(i)
+   * );
+   *
+   * // You can freely use async steps and sub-pipes
+   * await pipe(
+   *  {
+   *    url: "https://loremflickr.com/320/240/cat",
+   *    responseType: "stream",
+   *  },
+   *  axios,
+   *  (resp) => pipe(path.resolve("./cat.jpg"), fs.createWriteStream, resp.data.pipe)
+   * );
+   */
   public static async pipe<A, R1>(
     input: A,
     f1: (args: A) => Promise<R1> | R1
@@ -111,7 +156,7 @@ abstract class Pipe {
     R9,
     R10,
     R11,
-    R12
+    R12,
   >(
     input: A,
     f1: (args: A) => Promise<R1> | R1,
@@ -140,7 +185,7 @@ abstract class Pipe {
     R9,
     R10,
     R11,
-    R12
+    R12,
   >(
     input: A,
     f1: (args: A) => Promise<R1> | R1,
@@ -224,7 +269,7 @@ abstract class Pipe {
     f2: (args: R1) => Promise<R2> | R2,
     f3: (args: R2) => Promise<R3> | R3,
     f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => R5
+    f5: (args: R4) => Promise<R5> | R5
   ): Promise<R5> => await f5(await f4(await f3(await f2(await f1(input)))));
 
   private static pipe6 = async <A, R1, R2, R3, R4, R5, R6>(
@@ -322,7 +367,7 @@ abstract class Pipe {
     R8,
     R9,
     R10,
-    R11
+    R11,
   >(
     input: A,
     f1: (args: A) => Promise<R1> | R1,
@@ -362,7 +407,7 @@ abstract class Pipe {
     R9,
     R10,
     R11,
-    R12
+    R12,
   >(
     input: A,
     f1: (args: A) => Promise<R1> | R1,
@@ -395,4 +440,5 @@ abstract class Pipe {
     );
 }
 
-export const pipe = Pipe.pipe;
+// eslint-disable-next-line @typescript-eslint/unbound-method
+export default Pipe.pipe;
