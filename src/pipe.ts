@@ -111,7 +111,7 @@ abstract class Pipe {
     R9,
     R10,
     R11,
-    R12
+    R12,
   >(
     input: A,
     f1: (args: A) => Promise<R1> | R1,
@@ -140,7 +140,7 @@ abstract class Pipe {
     R9,
     R10,
     R11,
-    R12
+    R12,
   >(
     input: A,
     f1: (args: A) => Promise<R1> | R1,
@@ -224,7 +224,7 @@ abstract class Pipe {
     f2: (args: R1) => Promise<R2> | R2,
     f3: (args: R2) => Promise<R3> | R3,
     f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => R5
+    f5: (args: R4) => Promise<R5> | R5
   ): Promise<R5> => await f5(await f4(await f3(await f2(await f1(input)))));
 
   private static pipe6 = async <A, R1, R2, R3, R4, R5, R6>(
@@ -322,7 +322,7 @@ abstract class Pipe {
     R8,
     R9,
     R10,
-    R11
+    R11,
   >(
     input: A,
     f1: (args: A) => Promise<R1> | R1,
@@ -362,7 +362,7 @@ abstract class Pipe {
     R9,
     R10,
     R11,
-    R12
+    R12,
   >(
     input: A,
     f1: (args: A) => Promise<R1> | R1,
@@ -395,4 +395,5 @@ abstract class Pipe {
     );
 }
 
-export const pipe = Pipe.pipe;
+// eslint-disable-next-line @typescript-eslint/unbound-method
+export default Pipe.pipe;
