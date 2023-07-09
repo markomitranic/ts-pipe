@@ -1,4 +1,4 @@
-import { consoleLog, pipe } from "index";
+import { consoleLog, pipe } from "./index";
 
 test("sanity check, to-level imports work", async () => {
   jest.spyOn(console, "log").mockImplementation(() => {

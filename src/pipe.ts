@@ -1,115 +1,160 @@
-type IOverload = {
-  <A, R1>(input: A, f1: (args: A) => Promise<R1> | R1): Promise<R1>;
+type Overloads = {
+  // 1
+  <A, R1>(input: A, f1: (args: A) => R1): R1;
+  // 2
   <A, R1, R2>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2
-  ): Promise<R2>;
+    f1: (args: A) => R1,
+    f2: (args: Awaited<R1>) => R2
+  ): R1 & R2 extends Promise<unknown> ? Promise<R2> : R2;
+  // 3
   <A, R1, R2, R3>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3
-  ): Promise<R3>;
+    f1: (args: A) => R1,
+    f2: (args: Awaited<R1>) => R2,
+    f3: (args: Awaited<R2>) => R3
+  ): R1 & R2 & R3 extends Promise<unknown> ? Promise<R3> : R3;
+  // 4
   <A, R1, R2, R3, R4>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4
-  ): Promise<R4>;
+    f1: (args: A) => R1,
+    f2: (args: Awaited<R1>) => R2,
+    f3: (args: Awaited<R2>) => R3,
+    f4: (args: Awaited<R3>) => R4
+  ): R1 & R2 & R3 & R4 extends Promise<unknown> ? Promise<R4> : R4;
+  // 5
   <A, R1, R2, R3, R4, R5>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5
-  ): Promise<R5>;
+    f1: (args: A) => R1,
+    f2: (args: Awaited<R1>) => R2,
+    f3: (args: Awaited<R2>) => R3,
+    f4: (args: Awaited<R3>) => R4,
+    f5: (args: Awaited<R4>) => R5
+  ): R1 & R2 & R3 & R4 & R5 extends Promise<unknown> ? Promise<R5> : R5;
+  // 6
   <A, R1, R2, R3, R4, R5, R6>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6
-  ): Promise<R6>;
+    f1: (args: A) => R1,
+    f2: (args: Awaited<R1>) => R2,
+    f3: (args: Awaited<R2>) => R3,
+    f4: (args: Awaited<R3>) => R4,
+    f5: (args: Awaited<R4>) => R5,
+    f6: (args: Awaited<R5>) => R6
+  ): R1 & R2 & R3 & R4 & R5 & R6 extends Promise<unknown> ? Promise<R6> : R6;
+  // 7
   <A, R1, R2, R3, R4, R5, R6, R7>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6,
-    f7: (args: R6) => Promise<R7> | R7
-  ): Promise<R7>;
+    f1: (args: A) => R1,
+    f2: (args: Awaited<R1>) => R2,
+    f3: (args: Awaited<R2>) => R3,
+    f4: (args: Awaited<R3>) => R4,
+    f5: (args: Awaited<R4>) => R5,
+    f6: (args: Awaited<R5>) => R6,
+    f7: (args: Awaited<R6>) => R7
+  ): R1 & R2 & R3 & R4 & R5 & R6 & R7 extends Promise<unknown>
+    ? Promise<R7>
+    : R7;
+  // 8
   <A, R1, R2, R3, R4, R5, R6, R7, R8>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6,
-    f7: (args: R6) => Promise<R7> | R7,
-    f8: (args: R7) => Promise<R8> | R8
-  ): Promise<R8>;
+    f1: (args: A) => R1,
+    f2: (args: Awaited<R1>) => R2,
+    f3: (args: Awaited<R2>) => R3,
+    f4: (args: Awaited<R3>) => R4,
+    f5: (args: Awaited<R4>) => R5,
+    f6: (args: Awaited<R5>) => R6,
+    f7: (args: Awaited<R6>) => R7,
+    f8: (args: Awaited<R7>) => R8
+  ): R1 & R2 & R3 & R4 & R5 & R6 & R7 & R8 extends Promise<unknown>
+    ? Promise<R8>
+    : R8;
+  // 9
   <A, R1, R2, R3, R4, R5, R6, R7, R8, R9>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6,
-    f7: (args: R6) => Promise<R7> | R7,
-    f8: (args: R7) => Promise<R8> | R8,
-    f9: (args: R8) => Promise<R9> | R9
-  ): Promise<R9>;
+    f1: (args: A) => R1,
+    f2: (args: Awaited<R1>) => R2,
+    f3: (args: Awaited<R2>) => R3,
+    f4: (args: Awaited<R3>) => R4,
+    f5: (args: Awaited<R4>) => R5,
+    f6: (args: Awaited<R5>) => R6,
+    f7: (args: Awaited<R6>) => R7,
+    f8: (args: Awaited<R7>) => R8,
+    f9: (args: Awaited<R8>) => R9
+  ): R1 & R2 & R3 & R4 & R5 & R6 & R7 & R8 & R9 extends Promise<unknown>
+    ? Promise<R9>
+    : R9;
+  // 10
   <A, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6,
-    f7: (args: R6) => Promise<R7> | R7,
-    f8: (args: R7) => Promise<R8> | R8,
-    f9: (args: R8) => Promise<R9> | R9,
-    f10: (args: R9) => Promise<R10> | R10
-  ): Promise<R10>;
+    f1: (args: A) => R1,
+    f2: (args: Awaited<R1>) => R2,
+    f3: (args: Awaited<R2>) => R3,
+    f4: (args: Awaited<R3>) => R4,
+    f5: (args: Awaited<R4>) => R5,
+    f6: (args: Awaited<R5>) => R6,
+    f7: (args: Awaited<R6>) => R7,
+    f8: (args: Awaited<R7>) => R8,
+    f9: (args: Awaited<R8>) => R9,
+    f10: (args: Awaited<R9>) => R10
+  ): R1 & R2 & R3 & R4 & R5 & R6 & R7 & R8 & R9 & R10 extends Promise<unknown>
+    ? Promise<R10>
+    : R10;
+  // 11
   <A, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6,
-    f7: (args: R6) => Promise<R7> | R7,
-    f8: (args: R7) => Promise<R8> | R8,
-    f9: (args: R8) => Promise<R9> | R9,
-    f10: (args: R9) => Promise<R10> | R10,
-    f11: (args: R10) => Promise<R11> | R11
-  ): Promise<R11>;
+    f1: (args: A) => R1,
+    f2: (args: Awaited<R1>) => R2,
+    f3: (args: Awaited<R2>) => R3,
+    f4: (args: Awaited<R3>) => R4,
+    f5: (args: Awaited<R4>) => R5,
+    f6: (args: Awaited<R5>) => R6,
+    f7: (args: Awaited<R6>) => R7,
+    f8: (args: Awaited<R7>) => R8,
+    f9: (args: Awaited<R8>) => R9,
+    f10: (args: Awaited<R9>) => R10,
+    f11: (args: Awaited<R10>) => R11
+  ): R1 &
+    R2 &
+    R3 &
+    R4 &
+    R5 &
+    R6 &
+    R7 &
+    R8 &
+    R9 &
+    R10 &
+    R11 extends Promise<unknown>
+    ? Promise<R11>
+    : R11;
+  // 12
   <A, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6,
-    f7: (args: R6) => Promise<R7> | R7,
-    f8: (args: R7) => Promise<R8> | R8,
-    f9: (args: R8) => Promise<R9> | R9,
-    f10: (args: R9) => Promise<R10> | R10,
-    f11: (args: R10) => Promise<R11> | R11,
-    f12: (args: R11) => Promise<R12> | R12
-  ): Promise<R12>;
+    f1: (args: A) => R1,
+    f2: (args: Awaited<R1>) => R2,
+    f3: (args: Awaited<R2>) => R3,
+    f4: (args: Awaited<R3>) => R4,
+    f5: (args: Awaited<R4>) => R5,
+    f6: (args: Awaited<R5>) => R6,
+    f7: (args: Awaited<R6>) => R7,
+    f8: (args: Awaited<R7>) => R8,
+    f9: (args: Awaited<R8>) => R9,
+    f10: (args: Awaited<R9>) => R10,
+    f11: (args: Awaited<R10>) => R11,
+    f12: (args: Awaited<R11>) => R12
+  ): R1 &
+    R2 &
+    R3 &
+    R4 &
+    R5 &
+    R6 &
+    R7 &
+    R8 &
+    R9 &
+    R10 &
+    R11 &
+    R12 extends Promise<unknown>
+    ? Promise<R12>
+    : R12;
 };
 
 /**
@@ -124,41 +169,7 @@ type IOverload = {
  * and everything has to be awaited, even when there are no `async` functions.
  */
 abstract class Pipe {
-  /**
-   * Allows us to apply step-by-step transformations on a value
-   * with easy debugging access between steps and without naming concerns.
-   *
-   * Allows for async operations, with a caveat that steps are sequential and
-   * will await eachother. Thus, it is not suitable as a streaming `pipeline`.
-   *
-   * *Warning:* The maximum is 12 steps. You can easily pipe pipes together
-   * if you need more than 12. Or open a PR, it is fairly easy.
-   *
-   * @see https://github.com/markomitranic/ts-pipe/blob/main/README.md
-   *
-   * @example
-   * // Basic example
-   * pipe("1, 2, 3", myFunc, consoleLog, (_) => _.join("-"))
-   *
-   * // Variables can have any or no names
-   * pipe(
-   *  "1, 2, 3",
-   *  (__) => waitForSeconds(__, 30),
-   *  ($) => $.split(", "),
-   *  (explodedList) => explodedList.map((i) => parseInt(i)
-   * );
-   *
-   * // You can freely use async steps and sub-pipes
-   * await pipe(
-   *  {
-   *    url: "https://loremflickr.com/320/240/cat",
-   *    responseType: "stream",
-   *  },
-   *  axios,
-   *  (resp) => pipe(path.resolve("./cat.jpg"), fs.createWriteStream, resp.data.pipe)
-   * );
-   */
-  public static pipe: IOverload = async <
+  public static pipe: Overloads = async <
     A,
     R1,
     R2,
@@ -426,4 +437,45 @@ abstract class Pipe {
     );
 }
 
+/**
+ * Allows us to apply step-by-step transformations on a value
+ * with easy debugging access between steps and without naming concerns.
+ *
+ * All the steps must return a value.
+ *
+ * Allows for async operations, with a caveat that steps are sequential and
+ * will await eachother. Thus, it is not suitable as a streaming `pipeline`.
+ * When any of the operations are `async` the pipe as a whole will return
+ * a `Promise` and might be awaited.
+ *
+ * **Warning:** The maximum is 12 steps. You can easily pipe pipes together
+ * if you need more than 12. Or open a PR, it is fairly easy.
+ *
+ * @see https://github.com/markomitranic/ts-pipe/blob/main/README.md
+ *
+ * @example
+ * // Basic example
+ * pipe("1, 2, 3", myFunc, consoleLog, (_) => _.join("-"))
+ *
+ * // Variables can have any or no names
+ * pipe(
+ *  "1, 2, 3",
+ *  (__) => myFunc(__, 30),
+ *  ($) => $.split(", "),
+ *  (explodedList) => explodedList.map((i) => parseInt(i))
+ * )
+ *
+ * // Mix in some async operations
+ * await pipe("1, 2, 3", waitFor, (a) => a.split(","));
+ *
+ * // You can freely use async steps and sub-pipes
+ * await pipe(
+ *  {
+ *    url: "https://loremflickr.com/320/240/cat",
+ *    responseType: "stream",
+ *  },
+ *  axios,
+ *  (resp) => pipe(path.resolve("./cat.jpg"), fs.createWriteStream, resp.data.pipe)
+ * );
+ */
 export const pipe = Pipe.pipe;
