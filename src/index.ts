@@ -1,4 +1,2 @@
-import consoleLog from "./consoleLog";
-import pipe from "./pipe";
-
-export default { pipe, consoleLog };
+export { pipe } from "./pipe";
+export { consoleLog } from "./consoleLog";

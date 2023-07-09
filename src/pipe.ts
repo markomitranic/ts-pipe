@@ -1,3 +1,117 @@
+type IOverload = {
+  <A, R1>(input: A, f1: (args: A) => Promise<R1> | R1): Promise<R1>;
+  <A, R1, R2>(
+    input: A,
+    f1: (args: A) => Promise<R1> | R1,
+    f2: (args: R1) => Promise<R2> | R2
+  ): Promise<R2>;
+  <A, R1, R2, R3>(
+    input: A,
+    f1: (args: A) => Promise<R1> | R1,
+    f2: (args: R1) => Promise<R2> | R2,
+    f3: (args: R2) => Promise<R3> | R3
+  ): Promise<R3>;
+  <A, R1, R2, R3, R4>(
+    input: A,
+    f1: (args: A) => Promise<R1> | R1,
+    f2: (args: R1) => Promise<R2> | R2,
+    f3: (args: R2) => Promise<R3> | R3,
+    f4: (args: R3) => Promise<R4> | R4
+  ): Promise<R4>;
+  <A, R1, R2, R3, R4, R5>(
+    input: A,
+    f1: (args: A) => Promise<R1> | R1,
+    f2: (args: R1) => Promise<R2> | R2,
+    f3: (args: R2) => Promise<R3> | R3,
+    f4: (args: R3) => Promise<R4> | R4,
+    f5: (args: R4) => Promise<R5> | R5
+  ): Promise<R5>;
+  <A, R1, R2, R3, R4, R5, R6>(
+    input: A,
+    f1: (args: A) => Promise<R1> | R1,
+    f2: (args: R1) => Promise<R2> | R2,
+    f3: (args: R2) => Promise<R3> | R3,
+    f4: (args: R3) => Promise<R4> | R4,
+    f5: (args: R4) => Promise<R5> | R5,
+    f6: (args: R5) => Promise<R6> | R6
+  ): Promise<R6>;
+  <A, R1, R2, R3, R4, R5, R6, R7>(
+    input: A,
+    f1: (args: A) => Promise<R1> | R1,
+    f2: (args: R1) => Promise<R2> | R2,
+    f3: (args: R2) => Promise<R3> | R3,
+    f4: (args: R3) => Promise<R4> | R4,
+    f5: (args: R4) => Promise<R5> | R5,
+    f6: (args: R5) => Promise<R6> | R6,
+    f7: (args: R6) => Promise<R7> | R7
+  ): Promise<R7>;
+  <A, R1, R2, R3, R4, R5, R6, R7, R8>(
+    input: A,
+    f1: (args: A) => Promise<R1> | R1,
+    f2: (args: R1) => Promise<R2> | R2,
+    f3: (args: R2) => Promise<R3> | R3,
+    f4: (args: R3) => Promise<R4> | R4,
+    f5: (args: R4) => Promise<R5> | R5,
+    f6: (args: R5) => Promise<R6> | R6,
+    f7: (args: R6) => Promise<R7> | R7,
+    f8: (args: R7) => Promise<R8> | R8
+  ): Promise<R8>;
+  <A, R1, R2, R3, R4, R5, R6, R7, R8, R9>(
+    input: A,
+    f1: (args: A) => Promise<R1> | R1,
+    f2: (args: R1) => Promise<R2> | R2,
+    f3: (args: R2) => Promise<R3> | R3,
+    f4: (args: R3) => Promise<R4> | R4,
+    f5: (args: R4) => Promise<R5> | R5,
+    f6: (args: R5) => Promise<R6> | R6,
+    f7: (args: R6) => Promise<R7> | R7,
+    f8: (args: R7) => Promise<R8> | R8,
+    f9: (args: R8) => Promise<R9> | R9
+  ): Promise<R9>;
+  <A, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10>(
+    input: A,
+    f1: (args: A) => Promise<R1> | R1,
+    f2: (args: R1) => Promise<R2> | R2,
+    f3: (args: R2) => Promise<R3> | R3,
+    f4: (args: R3) => Promise<R4> | R4,
+    f5: (args: R4) => Promise<R5> | R5,
+    f6: (args: R5) => Promise<R6> | R6,
+    f7: (args: R6) => Promise<R7> | R7,
+    f8: (args: R7) => Promise<R8> | R8,
+    f9: (args: R8) => Promise<R9> | R9,
+    f10: (args: R9) => Promise<R10> | R10
+  ): Promise<R10>;
+  <A, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11>(
+    input: A,
+    f1: (args: A) => Promise<R1> | R1,
+    f2: (args: R1) => Promise<R2> | R2,
+    f3: (args: R2) => Promise<R3> | R3,
+    f4: (args: R3) => Promise<R4> | R4,
+    f5: (args: R4) => Promise<R5> | R5,
+    f6: (args: R5) => Promise<R6> | R6,
+    f7: (args: R6) => Promise<R7> | R7,
+    f8: (args: R7) => Promise<R8> | R8,
+    f9: (args: R8) => Promise<R9> | R9,
+    f10: (args: R9) => Promise<R10> | R10,
+    f11: (args: R10) => Promise<R11> | R11
+  ): Promise<R11>;
+  <A, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12>(
+    input: A,
+    f1: (args: A) => Promise<R1> | R1,
+    f2: (args: R1) => Promise<R2> | R2,
+    f3: (args: R2) => Promise<R3> | R3,
+    f4: (args: R3) => Promise<R4> | R4,
+    f5: (args: R4) => Promise<R5> | R5,
+    f6: (args: R5) => Promise<R6> | R6,
+    f7: (args: R6) => Promise<R7> | R7,
+    f8: (args: R7) => Promise<R8> | R8,
+    f9: (args: R8) => Promise<R9> | R9,
+    f10: (args: R9) => Promise<R10> | R10,
+    f11: (args: R10) => Promise<R11> | R11,
+    f12: (args: R11) => Promise<R12> | R12
+  ): Promise<R12>;
+};
+
 /**
  * The implementation seems basic, but is in fact what the big boys like
  * `fp-ts` are doing. Pure and simple value composition, no magic here
@@ -44,135 +158,7 @@ abstract class Pipe {
    *  (resp) => pipe(path.resolve("./cat.jpg"), fs.createWriteStream, resp.data.pipe)
    * );
    */
-  public static async pipe<A, R1>(
-    input: A,
-    f1: (args: A) => Promise<R1> | R1
-  ): Promise<R1>;
-  public static async pipe<A, R1, R2>(
-    input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2
-  ): Promise<R2>;
-  public static async pipe<A, R1, R2, R3>(
-    input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3
-  ): Promise<R3>;
-  public static async pipe<A, R1, R2, R3, R4>(
-    input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4
-  ): Promise<R4>;
-  public static async pipe<A, R1, R2, R3, R4, R5>(
-    input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5
-  ): Promise<R5>;
-  public static async pipe<A, R1, R2, R3, R4, R5, R6>(
-    input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6
-  ): Promise<R6>;
-  public static async pipe<A, R1, R2, R3, R4, R5, R6, R7>(
-    input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6,
-    f7: (args: R6) => Promise<R7> | R7
-  ): Promise<R7>;
-  public static async pipe<A, R1, R2, R3, R4, R5, R6, R7, R8>(
-    input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6,
-    f7: (args: R6) => Promise<R7> | R7,
-    f8: (args: R7) => Promise<R8> | R8
-  ): Promise<R8>;
-  public static async pipe<A, R1, R2, R3, R4, R5, R6, R7, R8, R9>(
-    input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6,
-    f7: (args: R6) => Promise<R7> | R7,
-    f8: (args: R7) => Promise<R8> | R8,
-    f9: (args: R8) => Promise<R9> | R9
-  ): Promise<R9>;
-  public static async pipe<A, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10>(
-    input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6,
-    f7: (args: R6) => Promise<R7> | R7,
-    f8: (args: R7) => Promise<R8> | R8,
-    f9: (args: R8) => Promise<R9> | R9,
-    f10: (args: R9) => Promise<R10> | R10
-  ): Promise<R10>;
-  public static async pipe<A, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11>(
-    input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6,
-    f7: (args: R6) => Promise<R7> | R7,
-    f8: (args: R7) => Promise<R8> | R8,
-    f9: (args: R8) => Promise<R9> | R9,
-    f10: (args: R9) => Promise<R10> | R10,
-    f11: (args: R10) => Promise<R11> | R11
-  ): Promise<R11>;
-  public static async pipe<
-    A,
-    R1,
-    R2,
-    R3,
-    R4,
-    R5,
-    R6,
-    R7,
-    R8,
-    R9,
-    R10,
-    R11,
-    R12,
-  >(
-    input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6,
-    f7: (args: R6) => Promise<R7> | R7,
-    f8: (args: R7) => Promise<R8> | R8,
-    f9: (args: R8) => Promise<R9> | R9,
-    f10: (args: R9) => Promise<R10> | R10,
-    f11: (args: R10) => Promise<R11> | R11,
-    f12: (args: R11) => Promise<R12> | R12
-  ): Promise<R12>;
-  public static async pipe<
+  public static pipe: IOverload = async <
     A,
     R1,
     R2,
@@ -200,7 +186,7 @@ abstract class Pipe {
     f10?: (args: R9) => Promise<R10> | R10,
     f11?: (args: R10) => Promise<R11> | R11,
     f12?: (args: R11) => Promise<R12> | R12
-  ): Promise<R1 | R2 | R3 | R4 | R5 | R6 | R7 | R8 | R9 | R10 | R11 | R12> {
+  ): Promise<R1 | R2 | R3 | R4 | R5 | R6 | R7 | R8 | R9 | R10 | R11 | R12> => {
     if (f2 && f3 && f4 && f5 && f6 && f7 && f8 && f9 && f10 && f11 && f12)
       return Pipe.pipe12(
         input,
@@ -235,7 +221,7 @@ abstract class Pipe {
     if (f2 && f3) return Pipe.pipe3(input, f1, f2, f3);
     if (f2) return Pipe.pipe2(input, f1, f2);
     return Pipe.pipe1(input, f1);
-  }
+  };
 
   private static pipe1 = async <A, R1>(
     input: A,
@@ -440,5 +426,4 @@ abstract class Pipe {
     );
 }
 
-// eslint-disable-next-line @typescript-eslint/unbound-method
-export default Pipe.pipe;
+export const pipe = Pipe.pipe;
