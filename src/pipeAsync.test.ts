@@ -1,11 +1,11 @@
 import { consoleLog } from "./consoleLog";
-import { pipe } from "./pipe";
+import { pipeAsync } from "./pipeAsync";
 
 test("propagates the original argument", () =>
-  pipe("123", (_) => expect(_).toStrictEqual("123")));
+  pipeAsync("123", (_) => expect(_).toStrictEqual("123")));
 
 test("works with stdlib functions", () =>
-  pipe(
+  pipeAsync(
     "1, 2, 3",
     (_) => _.split(", "),
     (_) => _.map((item) => item + item),
@@ -25,21 +25,18 @@ test("Validate eslint intellisense", async () => {
   }); // Console shhh...
 
   // Sync works
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const _m0: string[] = pipe("123", consoleLog, ($) => $.split(","));
+  const m0: string[] = await pipeAsync("1,2,3", consoleLog, ($) =>
+    $.split(",")
+  );
+  expect(m0).toStrictEqual(["1", "2", "3"]);
 
   // Async values awaited inline.
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const _m1: string[] = await pipe(
-    "1, 2, 3",
-    (a) => a.split(","),
-    waitFor,
-    ($: Promise<string[]>) => $
-  );
+  const m1: string[] = await pipeAsync("1,2,3", waitFor, (a) => a.split(","));
+  expect(m1).toStrictEqual(["1", "2", "3"]);
 });
 
-test("long pipeline", () => {
-  pipe(
+test("long pipeline", async () => {
+  await pipeAsync(
     1,
     (_) => _ + 1,
     (_) => _ + 1,
@@ -59,8 +56,8 @@ test("long pipeline", () => {
   );
 });
 
-test("double long pipeline", () => {
-  pipe(
+test("double long pipeline", async () => {
+  await pipeAsync(
     1,
     (_) => _ + 1,
     (_) => _ + 1,
@@ -69,7 +66,7 @@ test("double long pipeline", () => {
     (_) => _ + 1,
     (_) => _ + 1,
     (_) =>
-      pipe(
+      pipeAsync(
         _,
         (_) => _ + 1,
         (_) => _ + 1,
@@ -89,11 +86,11 @@ test("double long pipeline", () => {
 });
 
 test("supports async/await", async () => {
-  const resp = await pipe(
+  const resp = await pipeAsync(
     "1, 2, 3",
     async ($) => await waitFor($, 0.3),
-    async ($) => {
-      expect(typeof (await $)).toEqual("string");
+    ($) => {
+      expect(typeof $).toEqual("string");
       return $;
     }
   );
@@ -103,18 +100,26 @@ test("supports async/await", async () => {
 
 // This actually works but tye types don't allow it.
 test("automagically resolves promises within the pipe", async () => {
-  await pipe(
+  await pipeAsync(
     "1, 2, 3",
     async ($) => {
       const d = await waitFor($, 0.3);
       return d;
     },
-    async ($) => (await $).split(",")
+    ($) => $.split(",")
+  );
+});
+
+test("automagically redsolves promises within the pipe", async () => {
+  await pipeAsync(
+    "1, 2, 3",
+    async ($) => await waitFor($, 0.3),
+    ($) => expect(typeof $).toEqual("string")
   );
 });
 
 test("nested map traverse", () =>
-  pipe(
+  pipeAsync(
     [
       { player: "Aleksandar Mitrovic", goals: 10, shots: 118 },
       { player: "Mohamed Salah", goals: 19, shots: 116 },
@@ -140,29 +145,34 @@ test("nested map traverse", () =>
     (_) => expect(_).toStrictEqual(6.19)
   ));
 
-test("pipes within pipes", () => {
-  const middlePipePart = (_: number[]) =>
-    pipe(
-      _.map((i) => i + i),
-      (_) => _.map((i) => i.toString()),
-      (_) => {
-        _.push("end");
-        return _;
-      },
-      (_) => _.join("-"),
-      (_) => _.replace("4-6", "mid"),
-      (_) => "start" + _.substring(1)
-    );
+test("pipes within pipes", async () => {
+  jest.spyOn(console, "log").mockImplementation(() => {
+    return null;
+  }); // Console shhh...
 
-  const smpipe = pipe(
-    "1, 2, 3",
-    (_) => _.split(", "),
-    (_) => _.map((i) => parseInt(i))
-  );
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const _ = pipe(smpipe, middlePipePart, JSON.stringify, (_) =>
-    expect(_).toStrictEqual('"start-mid-end"')
+  await pipeAsync(
+    await pipeAsync(
+      "1, 2, 3",
+      (_) => _.split(", "),
+      (_) => _.map((i) => parseInt(i))
+    ),
+    (_: number[]) =>
+      pipeAsync(
+        _,
+        consoleLog,
+        (_) => _.map((i) => i + i),
+        (_) => _.map((i) => i.toString()),
+        (_) => {
+          _.push("end");
+          return _;
+        },
+        (_) => waitFor(_, 1),
+        (_) => _.join("-"),
+        (_) => _.replace("4-6", "mid"),
+        (_) => "start" + _.substring(1)
+      ),
+    JSON.stringify,
+    (_) => expect(_).toStrictEqual('"start-mid-end"')
   );
 });
 

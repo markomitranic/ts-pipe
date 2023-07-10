@@ -5,52 +5,52 @@ type Overloads = {
   <A, R1, R2>(
     input: A,
     f1: (args: A) => R1,
-    f2: (args: Awaited<R1>) => R2
+    f2: (args: R1) => R2
   ): R1 & R2 extends Promise<unknown> ? Promise<R2> : R2;
   // 3
   <A, R1, R2, R3>(
     input: A,
     f1: (args: A) => R1,
-    f2: (args: Awaited<R1>) => R2,
-    f3: (args: Awaited<R2>) => R3
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3
   ): R1 & R2 & R3 extends Promise<unknown> ? Promise<R3> : R3;
   // 4
   <A, R1, R2, R3, R4>(
     input: A,
     f1: (args: A) => R1,
-    f2: (args: Awaited<R1>) => R2,
-    f3: (args: Awaited<R2>) => R3,
-    f4: (args: Awaited<R3>) => R4
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3,
+    f4: (args: R3) => R4
   ): R1 & R2 & R3 & R4 extends Promise<unknown> ? Promise<R4> : R4;
   // 5
   <A, R1, R2, R3, R4, R5>(
     input: A,
     f1: (args: A) => R1,
-    f2: (args: Awaited<R1>) => R2,
-    f3: (args: Awaited<R2>) => R3,
-    f4: (args: Awaited<R3>) => R4,
-    f5: (args: Awaited<R4>) => R5
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3,
+    f4: (args: R3) => R4,
+    f5: (args: R4) => R5
   ): R1 & R2 & R3 & R4 & R5 extends Promise<unknown> ? Promise<R5> : R5;
   // 6
   <A, R1, R2, R3, R4, R5, R6>(
     input: A,
     f1: (args: A) => R1,
-    f2: (args: Awaited<R1>) => R2,
-    f3: (args: Awaited<R2>) => R3,
-    f4: (args: Awaited<R3>) => R4,
-    f5: (args: Awaited<R4>) => R5,
-    f6: (args: Awaited<R5>) => R6
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3,
+    f4: (args: R3) => R4,
+    f5: (args: R4) => R5,
+    f6: (args: R5) => R6
   ): R1 & R2 & R3 & R4 & R5 & R6 extends Promise<unknown> ? Promise<R6> : R6;
   // 7
   <A, R1, R2, R3, R4, R5, R6, R7>(
     input: A,
     f1: (args: A) => R1,
-    f2: (args: Awaited<R1>) => R2,
-    f3: (args: Awaited<R2>) => R3,
-    f4: (args: Awaited<R3>) => R4,
-    f5: (args: Awaited<R4>) => R5,
-    f6: (args: Awaited<R5>) => R6,
-    f7: (args: Awaited<R6>) => R7
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3,
+    f4: (args: R3) => R4,
+    f5: (args: R4) => R5,
+    f6: (args: R5) => R6,
+    f7: (args: R6) => R7
   ): R1 & R2 & R3 & R4 & R5 & R6 & R7 extends Promise<unknown>
     ? Promise<R7>
     : R7;
@@ -58,13 +58,13 @@ type Overloads = {
   <A, R1, R2, R3, R4, R5, R6, R7, R8>(
     input: A,
     f1: (args: A) => R1,
-    f2: (args: Awaited<R1>) => R2,
-    f3: (args: Awaited<R2>) => R3,
-    f4: (args: Awaited<R3>) => R4,
-    f5: (args: Awaited<R4>) => R5,
-    f6: (args: Awaited<R5>) => R6,
-    f7: (args: Awaited<R6>) => R7,
-    f8: (args: Awaited<R7>) => R8
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3,
+    f4: (args: R3) => R4,
+    f5: (args: R4) => R5,
+    f6: (args: R5) => R6,
+    f7: (args: R6) => R7,
+    f8: (args: R7) => R8
   ): R1 & R2 & R3 & R4 & R5 & R6 & R7 & R8 extends Promise<unknown>
     ? Promise<R8>
     : R8;
@@ -72,14 +72,14 @@ type Overloads = {
   <A, R1, R2, R3, R4, R5, R6, R7, R8, R9>(
     input: A,
     f1: (args: A) => R1,
-    f2: (args: Awaited<R1>) => R2,
-    f3: (args: Awaited<R2>) => R3,
-    f4: (args: Awaited<R3>) => R4,
-    f5: (args: Awaited<R4>) => R5,
-    f6: (args: Awaited<R5>) => R6,
-    f7: (args: Awaited<R6>) => R7,
-    f8: (args: Awaited<R7>) => R8,
-    f9: (args: Awaited<R8>) => R9
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3,
+    f4: (args: R3) => R4,
+    f5: (args: R4) => R5,
+    f6: (args: R5) => R6,
+    f7: (args: R6) => R7,
+    f8: (args: R7) => R8,
+    f9: (args: R8) => R9
   ): R1 & R2 & R3 & R4 & R5 & R6 & R7 & R8 & R9 extends Promise<unknown>
     ? Promise<R9>
     : R9;
@@ -87,15 +87,15 @@ type Overloads = {
   <A, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10>(
     input: A,
     f1: (args: A) => R1,
-    f2: (args: Awaited<R1>) => R2,
-    f3: (args: Awaited<R2>) => R3,
-    f4: (args: Awaited<R3>) => R4,
-    f5: (args: Awaited<R4>) => R5,
-    f6: (args: Awaited<R5>) => R6,
-    f7: (args: Awaited<R6>) => R7,
-    f8: (args: Awaited<R7>) => R8,
-    f9: (args: Awaited<R8>) => R9,
-    f10: (args: Awaited<R9>) => R10
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3,
+    f4: (args: R3) => R4,
+    f5: (args: R4) => R5,
+    f6: (args: R5) => R6,
+    f7: (args: R6) => R7,
+    f8: (args: R7) => R8,
+    f9: (args: R8) => R9,
+    f10: (args: R9) => R10
   ): R1 & R2 & R3 & R4 & R5 & R6 & R7 & R8 & R9 & R10 extends Promise<unknown>
     ? Promise<R10>
     : R10;
@@ -103,16 +103,16 @@ type Overloads = {
   <A, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11>(
     input: A,
     f1: (args: A) => R1,
-    f2: (args: Awaited<R1>) => R2,
-    f3: (args: Awaited<R2>) => R3,
-    f4: (args: Awaited<R3>) => R4,
-    f5: (args: Awaited<R4>) => R5,
-    f6: (args: Awaited<R5>) => R6,
-    f7: (args: Awaited<R6>) => R7,
-    f8: (args: Awaited<R7>) => R8,
-    f9: (args: Awaited<R8>) => R9,
-    f10: (args: Awaited<R9>) => R10,
-    f11: (args: Awaited<R10>) => R11
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3,
+    f4: (args: R3) => R4,
+    f5: (args: R4) => R5,
+    f6: (args: R5) => R6,
+    f7: (args: R6) => R7,
+    f8: (args: R7) => R8,
+    f9: (args: R8) => R9,
+    f10: (args: R9) => R10,
+    f11: (args: R10) => R11
   ): R1 &
     R2 &
     R3 &
@@ -130,17 +130,17 @@ type Overloads = {
   <A, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12>(
     input: A,
     f1: (args: A) => R1,
-    f2: (args: Awaited<R1>) => R2,
-    f3: (args: Awaited<R2>) => R3,
-    f4: (args: Awaited<R3>) => R4,
-    f5: (args: Awaited<R4>) => R5,
-    f6: (args: Awaited<R5>) => R6,
-    f7: (args: Awaited<R6>) => R7,
-    f8: (args: Awaited<R7>) => R8,
-    f9: (args: Awaited<R8>) => R9,
-    f10: (args: Awaited<R9>) => R10,
-    f11: (args: Awaited<R10>) => R11,
-    f12: (args: Awaited<R11>) => R12
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3,
+    f4: (args: R3) => R4,
+    f5: (args: R4) => R5,
+    f6: (args: R5) => R6,
+    f7: (args: R6) => R7,
+    f8: (args: R7) => R8,
+    f9: (args: R8) => R9,
+    f10: (args: R9) => R10,
+    f11: (args: R10) => R11,
+    f12: (args: R11) => R12
   ): R1 &
     R2 &
     R3 &
@@ -166,10 +166,10 @@ type Overloads = {
  *
  * I have played around with the idea of using `Promise` as a base,
  * and it worked flawlessly, without any type algebra, but the syntax is uglier
- * and everything has to be awaited, even when there are no `async` functions.
+ * and everything has to be ed, even when there are no `async` functions.
  */
 abstract class Pipe {
-  public static pipe: Overloads = async <
+  public static pipe: Overloads = <
     A,
     R1,
     R2,
@@ -185,19 +185,19 @@ abstract class Pipe {
     R12,
   >(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2?: (args: R1) => Promise<R2> | R2,
-    f3?: (args: R2) => Promise<R3> | R3,
-    f4?: (args: R3) => Promise<R4> | R4,
-    f5?: (args: R4) => Promise<R5> | R5,
-    f6?: (args: R5) => Promise<R6> | R6,
-    f7?: (args: R6) => Promise<R7> | R7,
-    f8?: (args: R7) => Promise<R8> | R8,
-    f9?: (args: R8) => Promise<R9> | R9,
-    f10?: (args: R9) => Promise<R10> | R10,
-    f11?: (args: R10) => Promise<R11> | R11,
-    f12?: (args: R11) => Promise<R12> | R12
-  ): Promise<R1 | R2 | R3 | R4 | R5 | R6 | R7 | R8 | R9 | R10 | R11 | R12> => {
+    f1: (args: A) => R1,
+    f2?: (args: R1) => R2,
+    f3?: (args: R2) => R3,
+    f4?: (args: R3) => R4,
+    f5?: (args: R4) => R5,
+    f6?: (args: R5) => R6,
+    f7?: (args: R6) => R7,
+    f8?: (args: R7) => R8,
+    f9?: (args: R8) => R9,
+    f10?: (args: R9) => R10,
+    f11?: (args: R10) => R11,
+    f12?: (args: R11) => R12
+  ): R1 | R2 | R3 | R4 | R5 | R6 | R7 | R8 | R9 | R10 | R11 | R12 => {
     if (f2 && f3 && f4 && f5 && f6 && f7 && f8 && f9 && f10 && f11 && f12)
       return Pipe.pipe12(
         input,
@@ -234,164 +234,115 @@ abstract class Pipe {
     return Pipe.pipe1(input, f1);
   };
 
-  private static pipe1 = async <A, R1>(
-    input: A,
-    f1: (args: A) => Promise<R1> | R1
-  ): Promise<R1> => await f1(input);
+  private static pipe1 = <A, R1>(input: A, f1: (args: A) => R1): R1 =>
+    f1(input);
 
-  private static pipe2 = async <A, R1, R2>(
+  private static pipe2 = <A, R1, R2>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2
-  ): Promise<R2> => await f2(await f1(input));
+    f1: (args: A) => R1,
+    f2: (args: R1) => R2
+  ): R2 => f2(f1(input));
 
-  private static pipe3 = async <A, R1, R2, R3>(
+  private static pipe3 = <A, R1, R2, R3>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3
-  ): Promise<R3> => await f3(await f2(await f1(input)));
+    f1: (args: A) => R1,
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3
+  ): R3 => f3(f2(f1(input)));
 
-  private static pipe4 = async <A, R1, R2, R3, R4>(
+  private static pipe4 = <A, R1, R2, R3, R4>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4
-  ): Promise<R4> => await f4(await f3(await f2(await f1(input))));
+    f1: (args: A) => R1,
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3,
+    f4: (args: R3) => R4
+  ): R4 => f4(f3(f2(f1(input))));
 
-  private static pipe5 = async <A, R1, R2, R3, R4, R5>(
+  private static pipe5 = <A, R1, R2, R3, R4, R5>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5
-  ): Promise<R5> => await f5(await f4(await f3(await f2(await f1(input)))));
+    f1: (args: A) => R1,
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3,
+    f4: (args: R3) => R4,
+    f5: (args: R4) => R5
+  ): R5 => f5(f4(f3(f2(f1(input)))));
 
-  private static pipe6 = async <A, R1, R2, R3, R4, R5, R6>(
+  private static pipe6 = <A, R1, R2, R3, R4, R5, R6>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6
-  ): Promise<R6> =>
-    await f6(await f5(await f4(await f3(await f2(await f1(input))))));
+    f1: (args: A) => R1,
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3,
+    f4: (args: R3) => R4,
+    f5: (args: R4) => R5,
+    f6: (args: R5) => R6
+  ): R6 => f6(f5(f4(f3(f2(f1(input))))));
 
-  private static pipe7 = async <A, R1, R2, R3, R4, R5, R6, R7>(
+  private static pipe7 = <A, R1, R2, R3, R4, R5, R6, R7>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6,
-    f7: (args: R6) => Promise<R7> | R7
-  ): Promise<R7> =>
-    await f7(await f6(await f5(await f4(await f3(await f2(await f1(input)))))));
+    f1: (args: A) => R1,
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3,
+    f4: (args: R3) => R4,
+    f5: (args: R4) => R5,
+    f6: (args: R5) => R6,
+    f7: (args: R6) => R7
+  ): R7 => f7(f6(f5(f4(f3(f2(f1(input)))))));
 
-  private static pipe8 = async <A, R1, R2, R3, R4, R5, R6, R7, R8>(
+  private static pipe8 = <A, R1, R2, R3, R4, R5, R6, R7, R8>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6,
-    f7: (args: R6) => Promise<R7> | R7,
-    f8: (args: R7) => Promise<R8> | R8
-  ): Promise<R8> =>
-    await f8(
-      await f7(
-        await f6(await f5(await f4(await f3(await f2(await f1(input))))))
-      )
-    );
+    f1: (args: A) => R1,
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3,
+    f4: (args: R3) => R4,
+    f5: (args: R4) => R5,
+    f6: (args: R5) => R6,
+    f7: (args: R6) => R7,
+    f8: (args: R7) => R8
+  ): R8 => f8(f7(f6(f5(f4(f3(f2(f1(input))))))));
 
-  private static pipe9 = async <A, R1, R2, R3, R4, R5, R6, R7, R8, R9>(
+  private static pipe9 = <A, R1, R2, R3, R4, R5, R6, R7, R8, R9>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6,
-    f7: (args: R6) => Promise<R7> | R7,
-    f8: (args: R7) => Promise<R8> | R8,
-    f9: (args: R8) => Promise<R9> | R9
-  ): Promise<R9> =>
-    await f9(
-      await f8(
-        await f7(
-          await f6(await f5(await f4(await f3(await f2(await f1(input))))))
-        )
-      )
-    );
+    f1: (args: A) => R1,
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3,
+    f4: (args: R3) => R4,
+    f5: (args: R4) => R5,
+    f6: (args: R5) => R6,
+    f7: (args: R6) => R7,
+    f8: (args: R7) => R8,
+    f9: (args: R8) => R9
+  ): R9 => f9(f8(f7(f6(f5(f4(f3(f2(f1(input)))))))));
 
-  private static pipe10 = async <A, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10>(
+  private static pipe10 = <A, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6,
-    f7: (args: R6) => Promise<R7> | R7,
-    f8: (args: R7) => Promise<R8> | R8,
-    f9: (args: R8) => Promise<R9> | R9,
-    f10: (args: R9) => Promise<R10> | R10
-  ): Promise<R10> =>
-    await f10(
-      await f9(
-        await f8(
-          await f7(
-            await f6(await f5(await f4(await f3(await f2(await f1(input))))))
-          )
-        )
-      )
-    );
+    f1: (args: A) => R1,
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3,
+    f4: (args: R3) => R4,
+    f5: (args: R4) => R5,
+    f6: (args: R5) => R6,
+    f7: (args: R6) => R7,
+    f8: (args: R7) => R8,
+    f9: (args: R8) => R9,
+    f10: (args: R9) => R10
+  ): R10 => f10(f9(f8(f7(f6(f5(f4(f3(f2(f1(input))))))))));
 
-  private static pipe11 = async <
-    A,
-    R1,
-    R2,
-    R3,
-    R4,
-    R5,
-    R6,
-    R7,
-    R8,
-    R9,
-    R10,
-    R11,
-  >(
+  private static pipe11 = <A, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11>(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6,
-    f7: (args: R6) => Promise<R7> | R7,
-    f8: (args: R7) => Promise<R8> | R8,
-    f9: (args: R8) => Promise<R9> | R9,
-    f10: (args: R9) => Promise<R10> | R10,
-    f11: (args: R10) => Promise<R11> | R11
-  ): Promise<R11> =>
-    await f11(
-      await f10(
-        await f9(
-          await f8(
-            await f7(
-              await f6(await f5(await f4(await f3(await f2(await f1(input))))))
-            )
-          )
-        )
-      )
-    );
+    f1: (args: A) => R1,
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3,
+    f4: (args: R3) => R4,
+    f5: (args: R4) => R5,
+    f6: (args: R5) => R6,
+    f7: (args: R6) => R7,
+    f8: (args: R7) => R8,
+    f9: (args: R8) => R9,
+    f10: (args: R9) => R10,
+    f11: (args: R10) => R11
+  ): R11 => f11(f10(f9(f8(f7(f6(f5(f4(f3(f2(f1(input)))))))))));
 
-  private static pipe12 = async <
+  private static pipe12 = <
     A,
     R1,
     R2,
@@ -407,52 +358,30 @@ abstract class Pipe {
     R12,
   >(
     input: A,
-    f1: (args: A) => Promise<R1> | R1,
-    f2: (args: R1) => Promise<R2> | R2,
-    f3: (args: R2) => Promise<R3> | R3,
-    f4: (args: R3) => Promise<R4> | R4,
-    f5: (args: R4) => Promise<R5> | R5,
-    f6: (args: R5) => Promise<R6> | R6,
-    f7: (args: R6) => Promise<R7> | R7,
-    f8: (args: R7) => Promise<R8> | R8,
-    f9: (args: R8) => Promise<R9> | R9,
-    f10: (args: R9) => Promise<R10> | R10,
-    f11: (args: R10) => Promise<R11> | R11,
-    f12: (args: R11) => Promise<R12> | R12
-  ): Promise<R12> =>
-    await f12(
-      await f11(
-        await f10(
-          await f9(
-            await f8(
-              await f7(
-                await f6(
-                  await f5(await f4(await f3(await f2(await f1(input)))))
-                )
-              )
-            )
-          )
-        )
-      )
-    );
+    f1: (args: A) => R1,
+    f2: (args: R1) => R2,
+    f3: (args: R2) => R3,
+    f4: (args: R3) => R4,
+    f5: (args: R4) => R5,
+    f6: (args: R5) => R6,
+    f7: (args: R6) => R7,
+    f8: (args: R7) => R8,
+    f9: (args: R8) => R9,
+    f10: (args: R9) => R10,
+    f11: (args: R10) => R11,
+    f12: (args: R11) => R12
+  ): R12 => f12(f11(f10(f9(f8(f7(f6(f5(f4(f3(f2(f1(input))))))))))));
 }
 
 /**
  * Allows us to apply step-by-step transformations on a value
  * with easy debugging access between steps and without naming concerns.
  *
- * All the steps must return a value.
- *
- * Allows for async operations, with a caveat that steps are sequential and
- * will await eachother. Thus, it is not suitable as a streaming `pipeline`.
- * When any of the operations are `async` the pipe as a whole will return
- * a `Promise` and might be awaited.
- *
- * **Warning:** The maximum is 12 steps. You can easily pipe pipes together
- * if you need more than 12. Or open a PR, it is fairly easy.
+ * **Warning:** All the steps must return a value. The maximum is 12 steps.
+ * You can easily pipe pipes together if you need more than 12.
  *
  * @see https://github.com/markomitranic/ts-pipe/blob/main/README.md
- *
+
  * @example
  * // Basic example
  * pipe("1, 2, 3", myFunc, consoleLog, (_) => _.join("-"))
@@ -465,8 +394,8 @@ abstract class Pipe {
  *  (explodedList) => explodedList.map((i) => parseInt(i))
  * )
  *
- * // Mix in some async operations
- * await pipe("1, 2, 3", waitFor, (a) => a.split(","));
+ * // Use with async
+ * await pipe("1, 2, 3", waitFor, async (a) => (await a).split(","));
  *
  * // You can freely use async steps and sub-pipes
  * await pipe(
@@ -475,7 +404,22 @@ abstract class Pipe {
  *    responseType: "stream",
  *  },
  *  axios,
- *  (resp) => pipe(path.resolve("./cat.jpg"), fs.createWriteStream, resp.data.pipe)
+ *  async (resp) => pipe(path.resolve("./cat.jpg"), fs.createWriteStream, await (resp).data.pipe)
  * );
+ * 
+ * @example
+ * 
+ * ## Async operations:
+ * The `pipe` works the same when you mix in any async steps:
+ * ```ts
+ * await pipe("1, 2, 3", waitForA, async (a) => (await a).split(","));
+ * ```
+ * While it works, any step after an async step will receive a promise,
+ * and has to be async. Which can get ugly. There is a `pipeAsync` 
+ * that is better suited for this job as it automatically awaits between 
+ * each step:
+ * ```ts
+ * await pipeAsync("1, 2, 3", waitForA, (a) => a.split(","));
+ * ```
  */
 export const pipe = Pipe.pipe;
