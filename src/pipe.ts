@@ -2,18 +2,14 @@ type Overloads = {
   // 1
   <A, R1>(input: A, f1: (args: A) => R1): R1;
   // 2
-  <A, R1, R2>(
-    input: A,
-    f1: (args: A) => R1,
-    f2: (args: R1) => R2
-  ): R1 & R2 extends Promise<unknown> ? Promise<R2> : R2;
+  <A, R1, R2>(input: A, f1: (args: A) => R1, f2: (args: R1) => R2): R2;
   // 3
   <A, R1, R2, R3>(
     input: A,
     f1: (args: A) => R1,
     f2: (args: R1) => R2,
     f3: (args: R2) => R3
-  ): R1 & R2 & R3 extends Promise<unknown> ? Promise<R3> : R3;
+  ): R3;
   // 4
   <A, R1, R2, R3, R4>(
     input: A,
@@ -21,7 +17,7 @@ type Overloads = {
     f2: (args: R1) => R2,
     f3: (args: R2) => R3,
     f4: (args: R3) => R4
-  ): R1 & R2 & R3 & R4 extends Promise<unknown> ? Promise<R4> : R4;
+  ): R4;
   // 5
   <A, R1, R2, R3, R4, R5>(
     input: A,
@@ -30,7 +26,7 @@ type Overloads = {
     f3: (args: R2) => R3,
     f4: (args: R3) => R4,
     f5: (args: R4) => R5
-  ): R1 & R2 & R3 & R4 & R5 extends Promise<unknown> ? Promise<R5> : R5;
+  ): R5;
   // 6
   <A, R1, R2, R3, R4, R5, R6>(
     input: A,
@@ -40,7 +36,7 @@ type Overloads = {
     f4: (args: R3) => R4,
     f5: (args: R4) => R5,
     f6: (args: R5) => R6
-  ): R1 & R2 & R3 & R4 & R5 & R6 extends Promise<unknown> ? Promise<R6> : R6;
+  ): R6;
   // 7
   <A, R1, R2, R3, R4, R5, R6, R7>(
     input: A,
@@ -51,9 +47,7 @@ type Overloads = {
     f5: (args: R4) => R5,
     f6: (args: R5) => R6,
     f7: (args: R6) => R7
-  ): R1 & R2 & R3 & R4 & R5 & R6 & R7 extends Promise<unknown>
-    ? Promise<R7>
-    : R7;
+  ): R7;
   // 8
   <A, R1, R2, R3, R4, R5, R6, R7, R8>(
     input: A,
@@ -65,9 +59,7 @@ type Overloads = {
     f6: (args: R5) => R6,
     f7: (args: R6) => R7,
     f8: (args: R7) => R8
-  ): R1 & R2 & R3 & R4 & R5 & R6 & R7 & R8 extends Promise<unknown>
-    ? Promise<R8>
-    : R8;
+  ): R8;
   // 9
   <A, R1, R2, R3, R4, R5, R6, R7, R8, R9>(
     input: A,
@@ -80,9 +72,7 @@ type Overloads = {
     f7: (args: R6) => R7,
     f8: (args: R7) => R8,
     f9: (args: R8) => R9
-  ): R1 & R2 & R3 & R4 & R5 & R6 & R7 & R8 & R9 extends Promise<unknown>
-    ? Promise<R9>
-    : R9;
+  ): R9;
   // 10
   <A, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10>(
     input: A,
@@ -96,9 +86,7 @@ type Overloads = {
     f8: (args: R7) => R8,
     f9: (args: R8) => R9,
     f10: (args: R9) => R10
-  ): R1 & R2 & R3 & R4 & R5 & R6 & R7 & R8 & R9 & R10 extends Promise<unknown>
-    ? Promise<R10>
-    : R10;
+  ): R10;
   // 11
   <A, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11>(
     input: A,
@@ -113,19 +101,7 @@ type Overloads = {
     f9: (args: R8) => R9,
     f10: (args: R9) => R10,
     f11: (args: R10) => R11
-  ): R1 &
-    R2 &
-    R3 &
-    R4 &
-    R5 &
-    R6 &
-    R7 &
-    R8 &
-    R9 &
-    R10 &
-    R11 extends Promise<unknown>
-    ? Promise<R11>
-    : R11;
+  ): R11;
   // 12
   <A, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12>(
     input: A,
@@ -141,20 +117,7 @@ type Overloads = {
     f10: (args: R9) => R10,
     f11: (args: R10) => R11,
     f12: (args: R11) => R12
-  ): R1 &
-    R2 &
-    R3 &
-    R4 &
-    R5 &
-    R6 &
-    R7 &
-    R8 &
-    R9 &
-    R10 &
-    R11 &
-    R12 extends Promise<unknown>
-    ? Promise<R12>
-    : R12;
+  ): R12;
 };
 
 /**
