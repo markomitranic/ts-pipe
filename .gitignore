@@ -9,3 +9,4 @@ node_modules/
 
 # Transient domain directories
 dist
+.idea
