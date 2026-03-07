@@ -113,14 +113,14 @@ Yes, via **Babel**:
 
 ### Related: `Function.pipe` / `Function.flow` proposal
 
-There is a separate TC39 proposal ([`proposal-function-pipe-flow`](https://github.com/tc39/proposal-function-pipe-flow)) to standardize helper functions:
+There was a separate TC39 proposal ([`proposal-function-pipe-flow`](https://github.com/tc39/proposal-function-pipe-flow)) to standardize helper functions:
 
 ```javascript
 const result = Function.pipe(input, f1, f2, f3);
 const composed = Function.flow(f1, f2, f3);
 ```
 
-This is essentially what your library already provides. If this proposal advances, your library becomes a polyfill/type-safe wrapper for a native feature — which is actually a great position to be in.
+This is essentially what your library already provides. However, **this proposal was rejected for Stage 1** at a July 2021 TC39 plenary, so it is unlikely to land as a native feature. That said, your API signature still aligns with what was proposed, and if the conversation ever reopens, your library would be well-positioned as a typed polyfill.
 
 ---
 
@@ -206,11 +206,9 @@ const result = pipeResult(
 
 This is similar to Elixir's `with` construct and Railway-Oriented Programming. It's one of the most-requested features for production pipe usage.
 
-### Proposal D: Prepare for `Function.pipe` compatibility (Low effort)
+### Proposal D: API alignment note
 
-Ensure your API signature matches the TC39 `Function.pipe` proposal. Your current signature `pipe(input, f1, f2, ...)` already matches. When/if `Function.pipe` lands, you can:
-- Re-export it as the native version with your type overloads layered on top
-- Provide a polyfill path for older runtimes
+Your current signature `pipe(input, f1, f2, ...)` already matches the (rejected) TC39 `Function.pipe` proposal shape. If the conversation ever reopens in TC39, you'd be well-positioned. No action needed here — just worth noting your API is already the "standard" shape.
 
 ### Proposal E: Upgrade TypeScript and tooling (Low effort)
 
