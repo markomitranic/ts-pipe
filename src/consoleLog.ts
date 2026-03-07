@@ -7,6 +7,6 @@
  * pipe("123", f1, consoleLog, f2)
  */
 export const consoleLog = <T>(data: T): T => {
-  console.log(data);
-  return data;
+	console.log(data);
+	return data;
 };

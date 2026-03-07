@@ -1,7 +1,8 @@
 *.log
 *.tgz
-.tool-versions
 .vscode
 dist
 node_modules
 test
+biome.json
+bun.lockb

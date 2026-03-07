@@ -1,9 +1,9 @@
 {
-  "recommendations": [
-    "dangmai.workspace-default-settings",
-    "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
-    "eamodio.gitlens",
-    "yzhang.markdown-all-in-one"
-  ]
+	"recommendations": [
+		"dangmai.workspace-default-settings",
+		"dbaeumer.vscode-eslint",
+		"esbenp.prettier-vscode",
+		"eamodio.gitlens",
+		"yzhang.markdown-all-in-one"
+	]
 }

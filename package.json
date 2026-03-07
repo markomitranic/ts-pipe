@@ -1,34 +1,25 @@
 {
-  "name": "@markomitranic/tspipe",
-  "version": "1.0.4",
-  "description": "A set of utility functions, inspired by good design of Elixir lang and poor design of lodash.",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "author": "Marko Mitranic <marko.mitranic@gmail.com>",
-  "license": "MIT",
-  "private": false,
-  "scripts": {
-    "prepare": "npm run build",
-    "build": "rm -rf dist && tsc --project tsconfig.build.json",
-    "start": "node --nolazy -r ts-node/register -r tsconfig-paths/register ${workspaceFolder}/index.ts",
-    "test": "jest"
-  },
-  "engines": {
-    "node": ">=18.16.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/markomitranic/ts-pipe.git"
-  },
-  "devDependencies": {
-    "@types/eslint": "^8.44.0",
-    "@types/jest": "^29.5.2",
-    "@typescript-eslint/eslint-plugin": "^5.61.0",
-    "@typescript-eslint/parser": "^5.61.0",
-    "eslint": "^8.44.0",
-    "jest": "^29.6.1",
-    "prettier": "^3.0.0",
-    "ts-jest": "^29.1.1",
-    "typescript": "^5.1.6"
-  }
+	"name": "@markomitranic/tspipe",
+	"version": "1.0.4",
+	"description": "A set of utility functions, inspired by good design of Elixir lang and poor design of lodash.",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"author": "Marko Mitranic <marko.mitranic@gmail.com>",
+	"license": "MIT",
+	"private": false,
+	"scripts": {
+		"build": "rm -rf dist && tsc --project tsconfig.build.json",
+		"test": "bun test",
+		"check": "biome check .",
+		"format": "biome check --write ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/markomitranic/ts-pipe.git"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.0",
+		"typescript": "^5.7.0"
+	},
+	"trustedDependencies": ["@biomejs/biome"]
 }
